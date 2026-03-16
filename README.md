@@ -87,8 +87,9 @@ IPClawForHealth/
 │   ├── 营养师.md
 │   └── 健康管理师.md
 └── tools/                   # 辅助工具
-    ├── 选题生成器.py
-    └── 脚本优化器.py
+    ├── topic_generator.py   # 选题生成器
+    ├── script_optimizer.py  # 脚本优化器
+    └── ai_prompt_generator.py # AI提示词生成器
 ```
 
 ---
@@ -144,9 +145,9 @@ IPClawForHealth/
 - [x] 脚本模板
 - [x] 话术库
 - [x] 案例库
-- [ ] 快速出片工作流
-- [ ] 深度打造30天工作流
-- [ ] AI 脚本生成工具
+- [x] 快速出片工作流
+- [x] 深度打造30天工作流
+- [x] AI 脚本生成工具
 - [ ] 行业专属 prompt 优化
 - [ ] 视频课程
 
