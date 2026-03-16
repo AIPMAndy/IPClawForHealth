@@ -22,7 +22,8 @@
 
 - `prompts/`: 5 core prompt files for positioning, topic discovery, script writing, sales messaging, and monetization design.
 - `workflows/`: 2 execution flows for fast content production and longer-term IP building.
-- `examples/案例库.md`: 1 casebook for structure and content strategy reference.
+- `examples/`: a teaching casebook plus one end-to-end usage example.
+- `docs/`: a health-content compliance checklist for safer public content and conversion copy.
 - `tools/`: 3 Python CLI helpers for topic generation, AI prompt generation, and script optimization.
 - `index.html`: 1 static landing page for repo presentation.
 
@@ -70,7 +71,9 @@ python3 tools/script_optimizer.py
    Draft a first script faster.
 4. `tools/script_optimizer.py`
    Make the script more spoken, estimate duration, and generate a shorter read-out version.
-5. `prompts/话术库.md` + `prompts/变现设计.md`
+5. `docs/健康内容合规清单.md`
+   Check risky claims before publishing or selling.
+6. `prompts/话术库.md` + `prompts/变现设计.md`
    Extend the content path into conversion, offer structure, and monetization.
 
 ## 📦 Repository structure
@@ -79,7 +82,10 @@ python3 tools/script_optimizer.py
 IPClawForHealth/
 ├── assets/
 │   └── cover.svg
+├── docs/
+│   └── 健康内容合规清单.md
 ├── examples/
+│   ├── 从定位到脚本实战示例.md
 │   └── 案例库.md
 ├── prompts/
 │   ├── 定位诊断.md
@@ -109,7 +115,7 @@ IPClawForHealth/
 ## Current limitations worth improving next
 
 - More case material for sub-verticals like sleep, rehab, mental health, and women's health
-- Input / output examples for each core prompt
+- More input / output examples for the core prompts
 - Better showcase assets for GitHub first-screen conversion, such as screenshots or short demos
 
 ## 🗺️ Roadmap
@@ -123,8 +129,10 @@ IPClawForHealth/
 - [x] Long-term IP workflow
 - [x] Python helper tools
 - [x] Static landing page
+- [x] First-use example flow
+- [x] Health-content compliance checklist
 - [ ] More vertical case studies
-- [ ] Prompt input / output examples
+- [ ] More prompt input / output examples
 - [ ] Better visual demo assets
 
 ## 🤝 Contributing
@@ -137,6 +145,11 @@ If you contribute prompt files, workflows, or case references, make the followin
 - required input
 - expected output
 - any compliance or sensitive-language risk
+
+## ⚠️ Compliance Note
+
+This repository is a content toolkit for the health vertical, not medical advice.  
+When you publish content about disease, treatment, medicine, chronic conditions, or special populations, review `docs/健康内容合规清单.md` first.
 
 ## 📄 License
 

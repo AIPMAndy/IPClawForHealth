@@ -443,7 +443,7 @@
         }
 
         .workflow-grid {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
         }
 
         .workflow-card .step {
@@ -595,7 +595,7 @@
                 <div class="reveal">
                     <div class="badge">Open-source content kit for health founders</div>
                     <h1>把大健康创始人的<span>口播 IP 资产</span>整理成一个可以直接复用的仓库</h1>
-                    <p>它不是“帮你一键生成全部内容”的黑盒工具，而是把定位、选题、脚本、成交、变现和执行路径拆成可以立刻用起来的 Prompt、案例和 CLI 小工具。</p>
+                    <p>它不是“帮你一键生成全部内容”的黑盒工具，而是把定位、选题、脚本、成交、变现、实战示例和合规边界拆成可以立刻用起来的 Prompt、案例和 CLI 小工具。</p>
                     <div class="actions">
                         <a class="btn btn-primary" href="https://github.com/AIPMAndy/IPClawForHealth" target="_blank" rel="noreferrer">查看 GitHub</a>
                         <a class="btn btn-secondary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/README.md" target="_blank" rel="noreferrer">阅读 README</a>
@@ -637,6 +637,10 @@
                             <div class="stack-item">
                                 <strong>选题生成 / Prompt 生成 / 脚本优化</strong>
                                 <span>直接可运行，不需要额外依赖</span>
+                            </div>
+                            <div class="stack-item">
+                                <strong>实战示例 + 合规清单</strong>
+                                <span>解决“不会填”和“怕踩雷”这两个第一次最常见的问题</span>
                             </div>
                         </div>
                         <div class="command-list">
@@ -743,7 +747,17 @@
                     <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/examples/%E6%A1%88%E4%BE%8B%E5%BA%93.md" target="_blank" rel="noreferrer">
                         <small>Casebook</small>
                         <h3>案例库</h3>
-                        <p>用参考案例拆解内容结构、定位方式和转化动作。</p>
+                        <p>用教学示意案例拆解内容结构、定位方式和转化动作。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/examples/%E4%BB%8E%E5%AE%9A%E4%BD%8D%E5%88%B0%E8%84%9A%E6%9C%AC%E5%AE%9E%E6%88%98%E7%A4%BA%E4%BE%8B.md" target="_blank" rel="noreferrer">
+                        <small>Example flow</small>
+                        <h3>实战示例</h3>
+                        <p>给第一次使用的人一条能直接照着走的完整路径。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/docs/%E5%81%A5%E5%BA%B7%E5%86%85%E5%AE%B9%E5%90%88%E8%A7%84%E6%B8%85%E5%8D%95.md" target="_blank" rel="noreferrer">
+                        <small>Compliance</small>
+                        <h3>合规清单</h3>
+                        <p>帮助你在健康内容表达、案例展示和成交文案里少踩坑。</p>
                     </a>
                 </div>
             </section>
@@ -794,7 +808,7 @@
                     <div>
                         <h2>推荐使用顺序</h2>
                     </div>
-                    <p>最有效的路径不是先折腾页面，而是先把你能持续产出的内容资产打通。</p>
+                    <p>最有效的路径不是先折腾页面，而是先把你能持续产出的内容资产和表达边界一起打通。</p>
                 </div>
                 <div class="grid workflow-grid">
                     <article class="workflow-card reveal">
@@ -820,6 +834,13 @@
                     </article>
                     <article class="workflow-card reveal">
                         <div class="step">4</div>
+                        <small>Compliance</small>
+                        <h3>先过一遍边界</h3>
+                        <p>在发布和成交前，先把绝对化承诺、疗效话术和高风险表述过滤掉。</p>
+                        <code>cat docs/健康内容合规清单.md</code>
+                    </article>
+                    <article class="workflow-card reveal">
+                        <div class="step">5</div>
                         <small>Conversion</small>
                         <h3>把成交接上</h3>
                         <p>用话术库和变现设计，把内容流量承接到私域、咨询和产品梯度上。</p>
@@ -856,7 +877,7 @@
 
             <section class="callout reveal">
                 <h2>先把仓库做成可信的“内容资产入口”，再继续做强品牌转化。</h2>
-                <p>如果你今天就要把项目展示出去，README 和这个 landing page 已经足够承担第一屏说明职责。接下来最值得补的是：更多真实案例、Prompt 输入输出样例，以及更强的展示素材。</p>
+                <p>如果你今天就要把项目展示出去，README 和这个 landing page 已经足够承担第一屏说明职责。现在仓库也补上了第一次使用示例和健康内容合规清单。接下来最值得补的是：更多垂类案例、更完整的 Prompt 样例，以及更强的展示素材。</p>
                 <div class="actions">
                     <a class="btn btn-primary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/README.md" target="_blank" rel="noreferrer">看中文 README</a>
                     <a class="btn btn-secondary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/tools/README.md" target="_blank" rel="noreferrer">看工具说明</a>
