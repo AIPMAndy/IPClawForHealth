@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPClawForHealth - 大健康行业创始人口播IP工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #1d1d1f;
+            --bg-tertiary: #2d2d2d;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #2997ff;
+            --accent-light: #0071e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center top, rgba(41, 151, 255, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(41, 151, 255, 0.1);
+            border: 1px solid rgba(41, 151, 255, 0.3);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #fff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(41, 151, 255, 0.1);
+        }
+
+        .features {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 40px 32px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-tertiary);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), #5e5ce6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .comparison {
+            padding: 120px 20px;
+            background: var(--bg-secondary);
+        }
+
+        .comparison-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .comp-table {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comp-header, .comp-cell {
+            padding: 20px 24px;
+            background: var(--bg-primary);
+        }
+
+        .comp-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .comp-header.highlight {
+            background: rgba(41, 151, 255, 0.15);
+        }
+
+        .comp-cell {
+            font-size: 16px;
+        }
+
+        .comp-cell.highlight {
+            background: rgba(41, 151, 255, 0.1);
+        }
+
+        .check { color: #30d158; }
+        .cross { color: #ff453a; }
+
+        .steps {
+            padding: 120px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .step-item {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+
+        .step-item h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .step-item p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid { grid-template-columns: 1fr; }
+            .comp-table { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; width: 100%; max-width: 280px; }
+            .btn { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#features">功能</a></li>
+            <li><a href="#comparison">对比</a></li>
+            <li><a href="#steps">使用</a></li>
+            <li><a href="https://github.com/AIPMAndy/IPClawForHealth" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">✦ 开源免费</div>
+        <h1><span>让大健康行业创始人</span><br>都会做自己的口播IP</h1>
+        <p>专为大健康行业创始人口播IP打造的手把手教学工具，不是通用工具，而是授人以渔</p>
+        <div class="hero-cta">
+            <a href="https://github.com/AIPMAndy/IPClawForHealth" class="btn btn-primary" target="_blank">开始在 GitHub →</a>
+            <a href="#features" class="btn btn-secondary">了解更多</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>为IP而生，因专业而不同</h2>
+            <p>从定位到变现，一站式解决方案</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎯</div>
+                <h3>IP定位诊断</h3>
+                <p>基于创始人背景、市场分析、用户需求，生成专属IP定位报告</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">📝</div>
+                <h3>100+行业选题库</h3>
+                <p>涵盖减肥、养生、营养、心理等细分领域，帮你找到爆款选题</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">📹</div>
+                <h3>脚本模板</h3>
+                <p>5分钟速成口播脚本，专业又通俗，持续输出不再难</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">💬</div>
+                <h3>成交话术</h3>
+                <p>从引流到成交全套话术模板，让流量高效变现</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">⚡</div>
+                <h3>快速出片流</h3>
+                <p>30分钟出片工作流，新手也能快速上手</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🚀</div>
+                <h3>深度打造流</h3>
+                <p>30天IP打造系统化路径，从0到1建立个人品牌</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison" id="comparison">
+        <div class="section-header">
+            <h2>为什么选择 IPClawForHealth？</h2>
+            <p>差异化定位，只为大健康行业创始人</p>
+        </div>
+        <div class="comparison-content">
+            <div class="comp-table">
+                <div class="comp-header">能力</div>
+                <div class="comp-header">通用视频工具</div>
+                <div class="comp-header">IPClaw</div>
+                <div class="comp-header highlight">IPClawForHealth</div>
+                
+                <div class="comp-cell">大健康行业垂直</div>
+                <div class="comp-cell cross">✗</div>
+                <div class="comp-cell cross">✗</div>
+                <div class="comp-cell highlight"><span class="check">✓</span> 独有</div>
+                
+                <div class="comp-cell">创始人IP定位诊断</div>
+                <div class="comp-cell cross">✗</div>
+                <div class="comp-cell check">✓</div>
+                <div class="comp-cell highlight"><span class="check">✓</span> 更强</div>
+                
+                <div class="comp-cell">行业专属选题库</div>
+                <div class="comp-cell cross">✗</div>
+                <div class="comp-cell check">✓</div>
+                <div class="comp-cell highlight"><span class="check">✓</span> 100+</div>
+                
+                <div class="comp-cell">变现话术模板</div>
+                <div class="comp-cell cross">✗</div>
+                <div class="comp-cell cross">✗</div>
+                <div class="comp-cell highlight"><span class="check">✓</span> 独有</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps" id="steps">
+        <div class="section-header">
+            <h2>3步快速开始</h2>
+            <p>从0到1打造你的IP</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-item fade-in">
+                <div class="step-number">1</div>
+                <h3>找定位</h3>
+                <p>使用IP定位诊断prompt，找到属于自己的差异化定位</p>
+            </div>
+            <div class="step-item fade-in">
+                <div class="step-number">2</div>
+                <h3>选选题</h3>
+                <p>从100+行业专属选题库中，选择适合自己的爆款选题</p>
+            </div>
+            <div class="step-item fade-in">
+                <div class="step-number">3</div>
+                <h3>写脚本</h3>
+                <p>用脚本模板5分钟生成专业口播稿</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ✦ by <a href="https://github.com/AIPMAndy" target="_blank">AI酋长Andy</a></p>
+    </footer>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
