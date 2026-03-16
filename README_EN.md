@@ -16,15 +16,19 @@
 
 > `IPClawForHealth` is not a finished SaaS product.
 >
-> It is an open-source repository of reusable content assets for health founders who want to build a talking-head IP: positioning prompts, topic libraries, script templates, monetization guidance, workflows, case references, and small CLI helpers.
+> It is an open-source repository of reusable content assets for health founders who want to build a talking-head IP: positioning prompts, topic libraries, script templates, platform-safe rewrites, monetization guidance, workflows, case references, and small CLI helpers.
+
+The most useful commercial positioning for this project is:
+
+**a health-founder IP content system designed for Chinese platform realities, balancing public-safe expression, consistent publishing, and conversion.**
 
 ## What is inside the repo
 
-- `prompts/`: 5 core prompt files for positioning, topic discovery, script writing, sales messaging, and monetization design.
+- `prompts/`: 6 core prompt files for positioning, topic discovery, script writing, platform-safe rewrites, sales messaging, and monetization design.
 - `workflows/`: 2 execution flows for fast content production and longer-term IP building.
 - `examples/`: a teaching casebook plus one end-to-end usage example.
-- `docs/`: a health-content compliance checklist for safer public content and conversion copy.
-- `tools/`: 3 Python CLI helpers for topic generation, AI prompt generation, and script optimization.
+- `docs/`: a health-content compliance checklist, a China platform risk guide, and a commercialization playbook.
+- `tools/`: 4 Python CLI helpers for topic generation, AI prompt generation, script optimization, and risk checking.
 - `index.html`: 1 static landing page for repo presentation.
 
 ## Why it is more useful than a generic prompt pack
@@ -33,7 +37,8 @@
 |------|:-------------------:|:---------------:|
 | Built for the health vertical | ❌ | ✅ |
 | Founder / expert point of view | ⚠️ | ✅ |
-| Covers content to conversion | ⚠️ | ✅ |
+| Covers public content and conversion | ⚠️ | ✅ |
+| Includes China-platform-safe assets | ❌ | ✅ |
 | Includes reusable workflows | ❌ | ✅ |
 | Ships runnable helper tools | ❌ | ✅ |
 | Can be used as a project landing page | ❌ | ✅ |
@@ -59,6 +64,9 @@ python3 tools/ai_prompt_generator.py
 
 # 5) Turn the draft into a more spoken script
 python3 tools/script_optimizer.py
+
+# 6) Check risky claims before publishing
+python3 tools/content_risk_checker.py --platform douyin
 ```
 
 ## Recommended usage flow
@@ -71,9 +79,11 @@ python3 tools/script_optimizer.py
    Draft a first script faster.
 4. `tools/script_optimizer.py`
    Make the script more spoken, estimate duration, and generate a shorter read-out version.
-5. `docs/健康内容合规清单.md`
-   Check risky claims before publishing or selling.
-6. `prompts/话术库.md` + `prompts/变现设计.md`
+5. `tools/content_risk_checker.py` + `prompts/平台安全改写.md`
+   Scan risky claims and rewrite the copy for public-platform use.
+6. `docs/健康内容合规清单.md` + `docs/中国平台限流避坑指南.md`
+   Control health-content boundaries and China-platform risk.
+7. `prompts/话术库.md` + `prompts/变现设计.md`
    Extend the content path into conversion, offer structure, and monetization.
 
 ## 📦 Repository structure
@@ -84,6 +94,8 @@ IPClawForHealth/
 │   └── cover.svg
 ├── docs/
 │   └── 健康内容合规清单.md
+│   ├── 中国平台限流避坑指南.md
+│   └── 商业化方案.md
 ├── examples/
 │   ├── 从定位到脚本实战示例.md
 │   └── 案例库.md
@@ -91,13 +103,15 @@ IPClawForHealth/
 │   ├── 定位诊断.md
 │   ├── 选题库.md
 │   ├── 脚本模板.md
+│   ├── 平台安全改写.md
 │   ├── 话术库.md
 │   └── 变现设计.md
 ├── tools/
 │   ├── README.md
 │   ├── topic_generator.py
 │   ├── ai_prompt_generator.py
-│   └── script_optimizer.py
+│   ├── script_optimizer.py
+│   └── content_risk_checker.py
 ├── workflows/
 │   ├── 快速出片流.md
 │   └── 深度打造流.md
@@ -111,11 +125,13 @@ IPClawForHealth/
 - Fitness coaches, dietitians, TCM / wellness operators, health consultants, and similar health professionals
 - Founders who want to convert professional expertise into consistent talking-head content
 - Small teams that need a lightweight content + conversion SOP
+- Health founders who worry that their public content may become too sensitive, too salesy, or too risky for Chinese platforms
 
 ## Current limitations worth improving next
 
 - More case material for sub-verticals like sleep, rehab, mental health, and women's health
 - More input / output examples for the core prompts
+- More platform-specific title, comment, and conversion templates
 - Better showcase assets for GitHub first-screen conversion, such as screenshots or short demos
 
 ## 🗺️ Roadmap
@@ -131,6 +147,10 @@ IPClawForHealth/
 - [x] Static landing page
 - [x] First-use example flow
 - [x] Health-content compliance checklist
+- [x] China platform risk guide
+- [x] Platform-safe rewrite prompt
+- [x] Content risk checker
+- [x] Commercialization playbook
 - [ ] More vertical case studies
 - [ ] More prompt input / output examples
 - [ ] Better visual demo assets

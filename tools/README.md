@@ -31,6 +31,17 @@ echo "很多人减脂只看体重，其实这很容易掉进误区。" | python3
 python3 tools/ai_prompt_generator.py
 ```
 
+### 4. content_risk_checker.py - 内容风险检查器
+
+扫描健康内容里的高风险表达，并给出更稳妥的替换建议。
+
+```bash
+python3 tools/content_risk_checker.py
+
+# 直接检查一段文案
+echo "7天瘦10斤，不节食不运动也能做到。" | python3 tools/content_risk_checker.py --platform douyin
+```
+
 ## 环境要求
 
 - Python 3.7+
@@ -41,3 +52,4 @@ python3 tools/ai_prompt_generator.py
 1. **选题阶段**：用 `topic_generator.py` 生成选题方向
 2. **脚本阶段**：用 `ai_prompt_generator.py` 生成初稿
 3. **优化阶段**：用 `script_optimizer.py` 优化为口语化脚本
+4. **发布前**：用 `content_risk_checker.py` 扫一遍风险词，再结合 `prompts/平台安全改写.md` 做平台适配

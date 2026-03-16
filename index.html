@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPClawForHealth | 大健康行业创始人口播 IP 开源工具箱</title>
-    <meta name="description" content="给大健康行业创始人的开源口播 IP 内容工具箱，包含定位、选题、脚本、成交、变现与工作流。">
+    <meta name="description" content="给大健康行业创始人的开源口播 IP 内容工具箱，包含定位、选题、平台安全改写、风险检查、成交、变现与工作流。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -595,7 +595,7 @@
                 <div class="reveal">
                     <div class="badge">Open-source content kit for health founders</div>
                     <h1>把大健康创始人的<span>口播 IP 资产</span>整理成一个可以直接复用的仓库</h1>
-                    <p>它不是“帮你一键生成全部内容”的黑盒工具，而是把定位、选题、脚本、成交、变现、实战示例和合规边界拆成可以立刻用起来的 Prompt、案例和 CLI 小工具。</p>
+                    <p>它不是“帮你一键生成全部内容”的黑盒工具，而是把定位、选题、脚本、平台安全改写、风险检查、成交、变现和实战示例拆成可以立刻用起来的 Prompt、案例和 CLI 小工具。</p>
                     <div class="actions">
                         <a class="btn btn-primary" href="https://github.com/AIPMAndy/IPClawForHealth" target="_blank" rel="noreferrer">查看 GitHub</a>
                         <a class="btn btn-secondary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/README.md" target="_blank" rel="noreferrer">阅读 README</a>
@@ -603,7 +603,7 @@
                     </div>
                     <div class="metrics">
                         <div class="metric">
-                            <strong>5</strong>
+                            <strong>6</strong>
                             <span>核心 Prompt</span>
                         </div>
                         <div class="metric">
@@ -611,12 +611,12 @@
                             <span>执行工作流</span>
                         </div>
                         <div class="metric">
-                            <strong>3</strong>
+                            <strong>4</strong>
                             <span>Python 小工具</span>
                         </div>
                         <div class="metric">
-                            <strong>1</strong>
-                            <span>静态展示页</span>
+                            <strong>3</strong>
+                            <span>风险/商业文档</span>
                         </div>
                     </div>
                 </div>
@@ -639,8 +639,8 @@
                                 <span>直接可运行，不需要额外依赖</span>
                             </div>
                             <div class="stack-item">
-                                <strong>实战示例 + 合规清单</strong>
-                                <span>解决“不会填”和“怕踩雷”这两个第一次最常见的问题</span>
+                                <strong>限流避坑 / 安全改写 / 风险检查</strong>
+                                <span>把“更适合国内平台生态”做成明确能力，而不只是提醒</span>
                             </div>
                         </div>
                         <div class="command-list">
@@ -648,6 +648,7 @@
                             <div class="command">python3 tools/topic_generator.py</div>
                             <div class="command">python3 tools/ai_prompt_generator.py</div>
                             <div class="command">python3 tools/script_optimizer.py</div>
+                            <div class="command">python3 tools/content_risk_checker.py --platform douyin</div>
                         </div>
                     </div>
                     <div class="panel-side">
@@ -675,7 +676,7 @@
                     <div>
                         <h2>为什么这个项目比泛 Prompt 包更有价值</h2>
                     </div>
-                    <p>核心差异不是“写得更热血”，而是把大健康行业创始人最常卡住的环节拆得更细、更接近实际执行。</p>
+                    <p>核心差异不是“写得更热血”，而是把大健康行业创始人最常卡住的环节拆得更细，并把公开表达风险也一起纳入系统里。</p>
                 </div>
                 <div class="grid value-grid">
                     <article class="card reveal">
@@ -697,6 +698,11 @@
                         <small>Runnable assets</small>
                         <h3>可运行工具</h3>
                         <p>除了 Markdown 资产，还补了 CLI 工具，降低第一次上手的执行摩擦。</p>
+                    </article>
+                    <article class="card reveal">
+                        <small>Platform fit</small>
+                        <h3>国内平台适配</h3>
+                        <p>不只教你写内容，也帮你把高风险表达、过猛销售和限流隐患往下压。</p>
                     </article>
                 </div>
             </section>
@@ -724,6 +730,11 @@
                         <h3>脚本模板</h3>
                         <p>把选题转成更适合短视频口播的结构化脚本骨架。</p>
                     </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/prompts/%E5%B9%B3%E5%8F%B0%E5%AE%89%E5%85%A8%E6%94%B9%E5%86%99.md" target="_blank" rel="noreferrer">
+                        <small>Prompt</small>
+                        <h3>平台安全改写</h3>
+                        <p>把太猛、太像广告、太像医疗承诺的文案改成更适合公开平台的版本。</p>
+                    </a>
                     <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/prompts/变现设计.md" target="_blank" rel="noreferrer">
                         <small>Prompt</small>
                         <h3>变现设计</h3>
@@ -742,7 +753,7 @@
                     <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/tools/README.md" target="_blank" rel="noreferrer">
                         <small>CLI tools</small>
                         <h3>辅助工具</h3>
-                        <p>选题生成、AI Prompt 生成、脚本优化三个小工具直接可跑。</p>
+                        <p>选题生成、AI Prompt 生成、脚本优化、风险检查四个小工具直接可跑。</p>
                     </a>
                     <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/examples/%E6%A1%88%E4%BE%8B%E5%BA%93.md" target="_blank" rel="noreferrer">
                         <small>Casebook</small>
@@ -758,6 +769,16 @@
                         <small>Compliance</small>
                         <h3>合规清单</h3>
                         <p>帮助你在健康内容表达、案例展示和成交文案里少踩坑。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/docs/%E4%B8%AD%E5%9B%BD%E5%B9%B3%E5%8F%B0%E9%99%90%E6%B5%81%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97.md" target="_blank" rel="noreferrer">
+                        <small>Platform risk</small>
+                        <h3>限流避坑指南</h3>
+                        <p>把“不会写”和“怕限流”拆成更具体的发布风险与规避动作。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/docs/%E5%95%86%E4%B8%9A%E5%8C%96%E6%96%B9%E6%A1%88.md" target="_blank" rel="noreferrer">
+                        <small>Offer</small>
+                        <h3>商业化方案</h3>
+                        <p>把这个仓库从资料包收敛成一个可卖的中国平台适配型内容产品。</p>
                     </a>
                 </div>
             </section>
@@ -793,7 +814,12 @@
                     <div class="compare-row">
                         <div class="compare-cell">工具支持</div>
                         <div class="compare-cell muted-cell">多为纯文档</div>
-                        <div class="compare-cell strong-cell">含 3 个可运行 CLI 工具</div>
+                        <div class="compare-cell strong-cell">含 4 个可运行 CLI 工具</div>
+                    </div>
+                    <div class="compare-row">
+                        <div class="compare-cell">平台风险控制</div>
+                        <div class="compare-cell muted-cell">通常没有明确方法</div>
+                        <div class="compare-cell strong-cell">限流避坑指南 + 安全改写 + 风险检查</div>
                     </div>
                     <div class="compare-row">
                         <div class="compare-cell">展示能力</div>
@@ -808,7 +834,7 @@
                     <div>
                         <h2>推荐使用顺序</h2>
                     </div>
-                    <p>最有效的路径不是先折腾页面，而是先把你能持续产出的内容资产和表达边界一起打通。</p>
+                    <p>最有效的路径不是先折腾页面，而是先把你能持续产出的内容资产、平台表达边界和转化动作一起打通。</p>
                 </div>
                 <div class="grid workflow-grid">
                     <article class="workflow-card reveal">
@@ -834,13 +860,20 @@
                     </article>
                     <article class="workflow-card reveal">
                         <div class="step">4</div>
+                        <small>Risk check</small>
+                        <h3>先扫风险词</h3>
+                        <p>用本地工具快速识别绝对化承诺、疗效式说法、过猛导流和夸张营销。</p>
+                        <code>python3 tools/content_risk_checker.py</code>
+                    </article>
+                    <article class="workflow-card reveal">
+                        <div class="step">5</div>
                         <small>Compliance</small>
                         <h3>先过一遍边界</h3>
                         <p>在发布和成交前，先把绝对化承诺、疗效话术和高风险表述过滤掉。</p>
                         <code>cat docs/健康内容合规清单.md</code>
                     </article>
                     <article class="workflow-card reveal">
-                        <div class="step">5</div>
+                        <div class="step">6</div>
                         <small>Conversion</small>
                         <h3>把成交接上</h3>
                         <p>用话术库和变现设计，把内容流量承接到私域、咨询和产品梯度上。</p>
@@ -877,7 +910,7 @@
 
             <section class="callout reveal">
                 <h2>先把仓库做成可信的“内容资产入口”，再继续做强品牌转化。</h2>
-                <p>如果你今天就要把项目展示出去，README 和这个 landing page 已经足够承担第一屏说明职责。现在仓库也补上了第一次使用示例和健康内容合规清单。接下来最值得补的是：更多垂类案例、更完整的 Prompt 样例，以及更强的展示素材。</p>
+                <p>如果你今天就要把项目展示出去，README 和这个 landing page 已经足够承担第一屏说明职责。现在仓库也补上了平台安全改写、风险检查、限流避坑指南和商业化方案。接下来最值得补的是：更多垂类案例、更完整的平台模板，以及更强的展示素材。</p>
                 <div class="actions">
                     <a class="btn btn-primary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/README.md" target="_blank" rel="noreferrer">看中文 README</a>
                     <a class="btn btn-secondary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/tools/README.md" target="_blank" rel="noreferrer">看工具说明</a>

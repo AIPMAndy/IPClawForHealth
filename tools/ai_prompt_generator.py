@@ -47,6 +47,25 @@ def generate_prompt(topic, role="口播脚本", style="专业但通俗", duratio
 
 视频主题：{topic}
 时长：约{duration}秒""",
+
+        "平台安全改写": f"""你是一位熟悉中国内容平台生态的大健康内容编辑。
+
+请把下面这段原始文案，改写成更适合公开平台发布的版本：
+
+原始文案：{topic}
+
+请按以下要求输出：
+1. 先指出 3-5 个风险点
+2. 给出 3 个更稳妥的标题
+3. 输出 1 版 60 秒口播稿
+4. 输出 1 版评论区引导
+5. 输出 1 版更轻的私信承接文案
+
+要求：
+- 保留专业价值
+- 删除绝对化承诺、疗效式说法、夸张营销和过猛导流
+- 更适合抖音 / 小红书 / 视频号公开发布
+- 如涉及疾病、治疗、用药，补一句边界提醒""",
     }
     
     return prompt_templates
@@ -61,16 +80,18 @@ def main():
     print("2. 选题扩展")
     print("3. 评论回复")
     print("4. 视频描述")
+    print("5. 平台安全改写")
     print()
     
-    choice = input("请输入选项（1-4）：").strip()
+    choice = input("请输入选项（1-5）：").strip()
     print()
     
     topics = {
         "1": "口播脚本",
         "2": "选题扩展", 
         "3": "评论回复",
-        "4": "视频描述"
+        "4": "视频描述",
+        "5": "平台安全改写",
     }
     
     role_type = topics.get(choice)
@@ -90,6 +111,8 @@ def main():
             topic = "真的有用吗？我试了一点效果都没有"
         elif choice == "4":
             topic = "健康减脂餐的正确做法"
+        elif choice == "5":
+            topic = "7天瘦10斤，不节食不运动也能做到。想要方案的评论区扣1，我拉你进群。"
     
     prompt = generate_prompt(topic, role_type)[role_type]
     

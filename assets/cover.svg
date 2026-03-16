@@ -33,15 +33,15 @@
     给大健康行业创始人的口播 IP 内容工具箱
   </text>
   <text x="220" y="432" fill="#C7DED7" font-family="Arial, sans-serif" font-size="24" font-weight="400">
-    定位 Prompt / 选题库 / 脚本模板 / 成交话术 / 变现设计 / 工作流 / CLI 工具
+    定位 / 选题 / 平台安全改写 / 风险检查 / 成交 / 变现 / 工作流 / CLI 工具
   </text>
 
   <rect x="220" y="490" width="260" height="90" rx="24" fill="#132B27" stroke="#7EDFC3" stroke-opacity="0.22"/>
   <text x="252" y="532" fill="#DFFAF0" font-family="Arial, sans-serif" font-size="22" font-weight="700">
-    5 个核心 Prompt
+    6 个核心 Prompt
   </text>
   <text x="252" y="564" fill="#93B8AE" font-family="Arial, sans-serif" font-size="18">
-    定位、选题、脚本、话术、变现
+    定位、选题、脚本、安全改写、话术、变现
   </text>
 
   <rect x="510" y="490" width="260" height="90" rx="24" fill="#132B27" stroke="#7EDFC3" stroke-opacity="0.22"/>
@@ -54,22 +54,22 @@
 
   <rect x="800" y="490" width="260" height="90" rx="24" fill="#132B27" stroke="#7EDFC3" stroke-opacity="0.22"/>
   <text x="832" y="532" fill="#DFFAF0" font-family="Arial, sans-serif" font-size="22" font-weight="700">
-    3 个 Python 工具
+    4 个 Python 工具
   </text>
   <text x="832" y="564" fill="#93B8AE" font-family="Arial, sans-serif" font-size="18">
-    选题生成 / Prompt 生成 / 脚本优化
+    选题生成 / Prompt 生成 / 脚本优化 / 风险检查
   </text>
 
   <rect x="1090" y="490" width="260" height="90" rx="24" fill="#132B27" stroke="#7EDFC3" stroke-opacity="0.22"/>
   <text x="1122" y="532" fill="#DFFAF0" font-family="Arial, sans-serif" font-size="22" font-weight="700">
-    1 个落地页
+    3 份关键文档
   </text>
   <text x="1122" y="564" fill="#93B8AE" font-family="Arial, sans-serif" font-size="18">
-    README + index.html 直接可展示
+    合规清单 / 限流避坑 / 商业化方案
   </text>
 
   <rect x="220" y="628" width="1130" height="96" rx="28" fill="#0F221E" fill-opacity="0.9" stroke="#FFFFFF" stroke-opacity="0.08"/>
   <text x="258" y="684" fill="url(#accent)" font-family="Arial, sans-serif" font-size="30" font-weight="700">
-    从内容灵感到成交动作，一套仓库把关键资产整理清楚。
+    从内容灵感到平台安全表达和成交动作，一套仓库把关键资产整理清楚。
   </text>
 </svg>
