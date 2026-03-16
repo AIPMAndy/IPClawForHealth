@@ -2,170 +2,149 @@
 
 # 🏥 IPClawForHealth
 
-**Help Health Industry Founders Create Their Own Talking-IP Videos**
+**An open-source talking-head IP content kit for health industry founders.**
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-2f8f83.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/IPClawForHealth?style=social)](https://github.com/AIPMAndy/IPClawForHealth/stargazers)
 [![Contributors](https://img.shields.io/github/contributors/AIPMAndy/IPClawForHealth)](https://github.com/AIPMAndy/IPClawForHealth/graphs/contributors)
 
 **English** | [简体中文](README.md)
 
-<img src="assets/demo.gif" width="600">
+<img src="assets/cover.svg" alt="IPClawForHealth cover" width="960">
 
 </div>
 
----
+> `IPClawForHealth` is not a finished SaaS product.
+>
+> It is an open-source repository of reusable content assets for health founders who want to build a talking-head IP: positioning prompts, topic libraries, script templates, monetization guidance, workflows, case references, and small CLI helpers.
 
-## 🆚 Why This Project?
+## What is inside the repo
 
-| Feature | Generic Video Tools | IPClaw | **IPClawForHealth** |
-|----------|:-------------------:|:------:|:------------------:|
-| Health Industry Vertical | ❌ | ❌ | ✅ **Exclusive** |
-| Founder IP Positioning | ❌ | ✅ | ✅ **Enhanced** |
-| Industry-Specific Topic Library | ❌ | ✅ | ✅ **100+** |
-| Monetization Scripts | ❌ | ❌ | ✅ **Exclusive** |
-| Case Studies | ❌ | ✅ | ✅ **Industry-Specific** |
-| Teaching-Focused | ❌ | ✅ | ✅ **Empower Users** |
+- `prompts/`: 5 core prompt files for positioning, topic discovery, script writing, sales messaging, and monetization design.
+- `workflows/`: 2 execution flows for fast content production and longer-term IP building.
+- `examples/案例库.md`: 1 casebook for structure and content strategy reference.
+- `tools/`: 3 Python CLI helpers for topic generation, AI prompt generation, and script optimization.
+- `index.html`: 1 static landing page for repo presentation.
 
-**Differentiated Positioning**: Specifically designed for health industry founders to build their talking-IP, not a generic tool but a hands-on teaching system.
+## Why it is more useful than a generic prompt pack
 
----
+| Area | Generic Prompt Pack | IPClawForHealth |
+|------|:-------------------:|:---------------:|
+| Built for the health vertical | ❌ | ✅ |
+| Founder / expert point of view | ⚠️ | ✅ |
+| Covers content to conversion | ⚠️ | ✅ |
+| Includes reusable workflows | ❌ | ✅ |
+| Ships runnable helper tools | ❌ | ✅ |
+| Can be used as a project landing page | ❌ | ✅ |
 
-## 🎯 What Problem Does It Solve?
-
-Health industry founders want to build their IP but face four major challenges:
-
-| Pain Point | Our Solution |
-|------------|--------------|
-| **Afraid to appear on camera** | Step-by-step guidance from 0 to 1 |
-| **Don't know what to say** | 100+ industry-specific topics |
-| **Can't write scripts** | 5-minute script templates |
-| **Unclear monetization path** | Complete monetization scripts & product design |
-
----
-
-## 🚀 Quick Start (30 seconds)
-
-### 1. Find Your Positioning
+## 🚀 Quick Start
 
 ```bash
-# Use IP positioning prompt
+git clone https://github.com/AIPMAndy/IPClawForHealth.git
+cd IPClawForHealth
+
+# 1) Preview the local landing page
+python3 -m http.server 8788
+# then open http://127.0.0.1:8788
+
+# 2) Start from positioning
 cat prompts/定位诊断.md
+
+# 3) Generate topic ideas
+python3 tools/topic_generator.py
+
+# 4) Generate an AI writing prompt
+python3 tools/ai_prompt_generator.py
+
+# 5) Turn the draft into a more spoken script
+python3 tools/script_optimizer.py
 ```
 
-### 2. Choose Topics
+## Recommended usage flow
 
-```bash
-# Pick trending topics from library
-cat prompts/选题库.md
-```
+1. `prompts/定位诊断.md`
+   Define your niche, founder angle, and differentiation.
+2. `prompts/选题库.md`
+   Pick topic angles that fit your current audience and growth stage.
+3. `prompts/脚本模板.md` + `tools/ai_prompt_generator.py`
+   Draft a first script faster.
+4. `tools/script_optimizer.py`
+   Make the script more spoken, estimate duration, and generate a shorter read-out version.
+5. `prompts/话术库.md` + `prompts/变现设计.md`
+   Extend the content path into conversion, offer structure, and monetization.
 
-### 3. Write Scripts
+## 📦 Repository structure
 
-```bash
-# Use templates to write scripts
-cat prompts/脚本模板.md
-```
-
----
-
-## 📖 Core Content
-
-```
+```text
 IPClawForHealth/
-├── prompts/                  # Core Prompt Library
-│   ├── 定位诊断.md          # Founder IP Positioning
-│   ├── 选题库.md            # 100+ Health Industry Topics
-│   ├── 脚本模板.md          # Talking Script Templates
-│   ├── 话术库.md            # Sales Scripts
-│   └── 变现设计.md          # Product Design Templates
-├── workflows/               # Workflows
-│   ├── 快速出片流.md        # 30-Minute Video Production
-│   └── 深度打造流.md       # 30-Day IP Building
-├── examples/                # Case Studies
-│   ├── 健身教练.md
-│   ├── 营养师.md
-│   └── 健康管理师.md
-└── tools/                   # Helper Tools
-    ├── 选题生成器.py
-    └── 脚本优化器.py
+├── assets/
+│   └── cover.svg
+├── examples/
+│   └── 案例库.md
+├── prompts/
+│   ├── 定位诊断.md
+│   ├── 选题库.md
+│   ├── 脚本模板.md
+│   ├── 话术库.md
+│   └── 变现设计.md
+├── tools/
+│   ├── README.md
+│   ├── topic_generator.py
+│   ├── ai_prompt_generator.py
+│   └── script_optimizer.py
+├── workflows/
+│   ├── 快速出片流.md
+│   └── 深度打造流.md
+├── index.html
+├── README.md
+└── README_EN.md
 ```
 
----
+## Who it is for
 
-## 💡 Use Cases
+- Fitness coaches, dietitians, TCM / wellness operators, health consultants, and similar health professionals
+- Founders who want to convert professional expertise into consistent talking-head content
+- Small teams that need a lightweight content + conversion SOP
 
-### Case 1: New Fitness Coach
+## Current limitations worth improving next
 
-> "I don't know how to build IP, feel not professional enough"
-
-**Solution**:
-1. Use positioning tool to find niche ("fragmented fitness")
-2. Pick topic "5-minute abs at home"
-3. Write script with template
-4. Film and publish in 30 minutes
-
-### 2: Dietitian Wanting to Go Online
-
-> "Want to acquire customers online, but don't know what to write"
-
-**Solution**:
-1. Position as "scientific diet science"
-2. Pick "myth-busting" series from topic library
-3. Write "5 so-called 'healthy' foods that make you gain weight"
-4. Build trust through consistent content
-
-### Case 3: TCM Wellness Center Owner
-
-> "Young people don't trust traditional wellness"
-
-**Solution**:
-1. Position as "modern wellness in relatable language"
-2. Explain ancient wisdom in young people's language
-3. Close loop: online content → offline experience
-
----
-
-## 🔥 Success Stories
-
-| Role | Results | Time |
-|------|---------|------|
-| Fitness Coach | 0→30K followers, 10→50 clients/month | 6 months |
-| Dietitian | 0→80K followers, ¥50K/month online | 1 year |
-| TCM PhD | 20K→150K followers, ¥80K/month courses | 1 year |
-
----
+- More case material for sub-verticals like sleep, rehab, mental health, and women's health
+- Input / output examples for each core prompt
+- Better showcase assets for GitHub first-screen conversion, such as screenshots or short demos
 
 ## 🗺️ Roadmap
 
-- [x] Project initialization
-- [x] Positioning prompt
-- [x] Topic library (100+)
+- [x] Core prompt structure
+- [x] Topic library
 - [x] Script templates
-- [x] Sales scripts
-- [x] Case studies
-- [ ] Quick production workflow
-- [ ] 30-day IP building workflow
-- [ ] AI script generator
-- [ ] Industry-specific prompt optimization
-- [ ] Video courses
-
----
-
-## 👨‍💻 Author
-
-**AI酋长Andy** | AI Product Expert, Ex-Tencent/Baidu AI Product Lead
-
-[![Twitter](https://img.shields.io/badge/Twitter-@AIPMAndy-1DA1F2?style=flat&logo=twitter)](https://twitter.com/AIPMAndy)
-[![WeChat](https://img.shields.io/badge/微信-AIPMAndy-07C160?style=flat&logo=wechat)](https://github.com/AIPMAndy)
-
----
+- [x] Sales messaging
+- [x] Monetization prompt
+- [x] Fast production workflow
+- [x] Long-term IP workflow
+- [x] Python helper tools
+- [x] Static landing page
+- [ ] More vertical case studies
+- [ ] Prompt input / output examples
+- [ ] Better visual demo assets
 
 ## 🤝 Contributing
 
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
+Issues and PRs are welcome.
 
----
+If you contribute prompt files, workflows, or case references, make the following explicit:
 
-**If this helps, please give a ⭐ Star!**
+- intended role
+- required input
+- expected output
+- any compliance or sensitive-language risk
 
+## 📄 License
+
+This project is released under the [MIT License](LICENSE).
+
+## 👨‍💻 Author
+
+**AI酋长Andy**
+
+- GitHub: [AIPMAndy](https://github.com/AIPMAndy)
+- Project: [IPClawForHealth](https://github.com/AIPMAndy/IPClawForHealth)

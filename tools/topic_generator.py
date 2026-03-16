@@ -49,18 +49,25 @@ def generate_topics(keyword=None, count=10):
     """生成选题"""
     if not keyword:
         keyword = random.choice(KEYWORDS)
-    
+
     topics = []
-    for i in range(count):
+    seen = set()
+    attempts = 0
+    max_attempts = max(count * 20, 20)
+
+    while len(topics) < count and attempts < max_attempts:
         template = random.choice(TOPIC_TEMPLATES)
-        
         topic = template.replace("{关键词}", keyword)
         topic = topic.replace("{数字}", str(random.randint(1, 5)))
         topic = topic.replace("{人群}", random.choice(AUDIENCES))
         topic = topic.replace("{动作}", random.choice(ACTIONS))
-        
-        topics.append(topic)
-    
+
+        if topic not in seen:
+            seen.add(topic)
+            topics.append(topic)
+
+        attempts += 1
+
     return topics
 
 def main():

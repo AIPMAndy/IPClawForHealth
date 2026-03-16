@@ -3,503 +3,883 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPClawForHealth - 大健康行业创始人口播IP工具</title>
+    <title>IPClawForHealth | 大健康行业创始人口播 IP 开源工具箱</title>
+    <meta name="description" content="给大健康行业创始人的开源口播 IP 内容工具箱，包含定位、选题、脚本、成交、变现与工作流。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #000000;
-            --bg-secondary: #1d1d1f;
-            --bg-tertiary: #2d2d2d;
-            --text-primary: #f5f5f7;
-            --text-secondary: #86868b;
-            --accent: #2997ff;
-            --accent-light: #0071e3;
+            --bg: #081210;
+            --bg-soft: rgba(16, 35, 31, 0.82);
+            --card: rgba(14, 29, 26, 0.94);
+            --card-strong: rgba(18, 40, 36, 0.96);
+            --line: rgba(220, 245, 238, 0.08);
+            --text: #f1fbf7;
+            --muted: #9ebbb3;
+            --accent: #3ec6a0;
+            --accent-soft: #91ece2;
+            --warning: #ffd88a;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 48px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 12px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-        }
-
-        .hero {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px 80px;
-            position: relative;
-            overflow: hidden;
+            font-family: "Noto Sans SC", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(62, 198, 160, 0.16), transparent 28%),
+                radial-gradient(circle at right 10% top 20%, rgba(145, 236, 226, 0.12), transparent 24%),
+                linear-gradient(180deg, #081210 0%, #050a09 100%);
+            line-height: 1.6;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center top, rgba(41, 151, 255, 0.15) 0%, transparent 60%);
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 90%);
             pointer-events: none;
         }
 
-        .hero-badge {
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .shell {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 72px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 14px 18px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(8, 18, 16, 0.72);
+            backdrop-filter: blur(18px);
+            position: sticky;
+            top: 16px;
+            z-index: 20;
+            margin-bottom: 32px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: "Outfit", sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: #07201a;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            gap: 28px;
+            align-items: center;
+            padding: 44px 0 40px;
+        }
+
+        .badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(41, 151, 255, 0.1);
-            border: 1px solid rgba(41, 151, 255, 0.3);
-            border-radius: 20px;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(145, 236, 226, 0.2);
+            background: rgba(62, 198, 160, 0.08);
+            color: var(--accent-soft);
             font-size: 14px;
-            color: var(--accent);
-            margin-bottom: 24px;
-            animation: fadeInUp 0.8s ease;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: clamp(40px, 8vw, 80px);
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            animation: fadeInUp 0.8s ease 0.1s both;
+            font-family: "Outfit", sans-serif;
+            font-size: clamp(46px, 7vw, 82px);
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+            margin-bottom: 20px;
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, #fff 0%, #86868b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent-soft);
         }
 
         .hero p {
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.8s ease 0.2s both;
+            max-width: 640px;
+            color: var(--muted);
+            font-size: clamp(18px, 2.4vw, 21px);
+            margin-bottom: 28px;
         }
 
-        .hero-cta {
+        .actions {
             display: flex;
-            gap: 16px;
-            animation: fadeInUp 0.8s ease 0.3s both;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 24px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 980px;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-light);
-            transform: scale(1.02);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: #07231d;
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
+            border-color: rgba(145, 236, 226, 0.16);
+            background: rgba(17, 36, 31, 0.84);
+            color: var(--text);
         }
 
-        .btn-secondary:hover {
-            background: rgba(41, 151, 255, 0.1);
-        }
-
-        .features {
-            padding: 120px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-header h2 {
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--bg-secondary);
-            border-radius: 24px;
-            padding: 40px 32px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            background: var(--bg-tertiary);
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--accent), #5e5ce6);
-            border-radius: 16px;
+        .metrics {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .feature-card h3 {
-            font-size: 22px;
-            font-weight: 600;
+        .metric {
+            padding: 12px 14px;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: rgba(10, 22, 20, 0.72);
+            min-width: 148px;
+        }
+
+        .metric strong {
+            display: block;
+            font-family: "Outfit", sans-serif;
+            font-size: 24px;
+            color: var(--accent-soft);
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hero-panel {
+            display: grid;
+            gap: 18px;
+            padding: 20px;
+            border-radius: 32px;
+            background: linear-gradient(180deg, rgba(16, 35, 31, 0.94) 0%, rgba(10, 21, 18, 0.96) 100%);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .panel-main,
+        .panel-side-card {
+            border-radius: 24px;
+            background: rgba(8, 18, 16, 0.58);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 22px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--warning);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
             margin-bottom: 12px;
         }
 
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 15px;
+        .panel-main h2 {
+            font-family: "Outfit", sans-serif;
+            font-size: 28px;
+            margin-bottom: 18px;
         }
 
-        .comparison {
-            padding: 120px 20px;
-            background: var(--bg-secondary);
-        }
-
-        .comparison-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .comp-table {
+        .stack {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 1px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 16px;
-            overflow: hidden;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
-        .comp-header, .comp-cell {
-            padding: 20px 24px;
-            background: var(--bg-primary);
+        .stack-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .comp-header {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-secondary);
-        }
-
-        .comp-header.highlight {
-            background: rgba(41, 151, 255, 0.15);
-        }
-
-        .comp-cell {
+        .stack-item strong {
             font-size: 16px;
         }
 
-        .comp-cell.highlight {
-            background: rgba(41, 151, 255, 0.1);
+        .stack-item span {
+            color: var(--muted);
+            font-size: 14px;
+            text-align: right;
         }
 
-        .check { color: #30d158; }
-        .cross { color: #ff453a; }
-
-        .steps {
-            padding: 120px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .steps-grid {
+        .command-list {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 10px;
         }
 
-        .step-item {
-            text-align: center;
+        .command {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 13px;
+            color: #d5f6ee;
+            padding: 12px 14px;
+            border-radius: 16px;
+            background: rgba(9, 26, 22, 0.92);
+            border: 1px solid rgba(145, 236, 226, 0.12);
+            overflow-x: auto;
         }
 
-        .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0 auto 20px;
+        .panel-side {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
         }
 
-        .step-item h3 {
-            font-size: 20px;
+        .panel-side-card h3 {
+            font-size: 18px;
             margin-bottom: 8px;
         }
 
-        .step-item p {
-            color: var(--text-secondary);
-            font-size: 15px;
-        }
-
-        footer {
-            padding: 60px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        footer p {
-            color: var(--text-secondary);
+        .panel-side-card p,
+        .panel-side-card li {
+            color: var(--muted);
             font-size: 14px;
         }
 
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
+        .panel-side-card ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        section {
+            padding: 48px 0 0;
         }
 
-        .fade-in {
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+
+        .section-head h2 {
+            font-family: "Outfit", sans-serif;
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .section-head p {
+            max-width: 560px;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .value-grid,
+        .deliverable-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .card,
+        .deliverable-card,
+        .workflow-card,
+        .case-card,
+        .compare-table {
+            border-radius: 28px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .card,
+        .deliverable-card,
+        .workflow-card,
+        .case-card {
+            padding: 24px;
+        }
+
+        .card h3,
+        .deliverable-card h3,
+        .workflow-card h3,
+        .case-card h3 {
+            font-family: "Outfit", sans-serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card p,
+        .deliverable-card p,
+        .workflow-card p,
+        .case-card p {
+            color: var(--muted);
+        }
+
+        .card small,
+        .deliverable-card small,
+        .workflow-card small,
+        .case-card small {
+            display: block;
+            color: var(--accent-soft);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+        }
+
+        .deliverable-card {
+            display: block;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .deliverable-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(145, 236, 226, 0.22);
+        }
+
+        .compare-table {
+            overflow: hidden;
+        }
+
+        .compare-row {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr;
+        }
+
+        .compare-row:not(:last-child) {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .compare-cell {
+            padding: 18px 20px;
+        }
+
+        .compare-row .compare-cell:first-child {
+            font-weight: 700;
+        }
+
+        .compare-head {
+            background: var(--card-strong);
+            font-family: "Outfit", sans-serif;
+        }
+
+        .muted-cell {
+            color: var(--muted);
+        }
+
+        .strong-cell {
+            color: var(--accent-soft);
+            font-weight: 700;
+        }
+
+        .workflow-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .workflow-card .step {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 14px;
+            font-family: "Outfit", sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            background: rgba(62, 198, 160, 0.15);
+            color: var(--accent-soft);
+        }
+
+        .workflow-card code {
+            display: inline-block;
+            margin-top: 14px;
+            color: #d7faf1;
+            font-size: 13px;
+            background: rgba(8, 18, 16, 0.7);
+            padding: 8px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(145, 236, 226, 0.12);
+        }
+
+        .case-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .callout {
+            margin-top: 48px;
+            padding: 32px;
+            border-radius: 32px;
+            border: 1px solid rgba(145, 236, 226, 0.15);
+            background:
+                linear-gradient(135deg, rgba(62, 198, 160, 0.12) 0%, rgba(145, 236, 226, 0.04) 100%),
+                rgba(9, 20, 18, 0.94);
+            box-shadow: var(--shadow);
+        }
+
+        .callout h2 {
+            font-family: "Outfit", sans-serif;
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+        }
+
+        .callout p {
+            color: var(--muted);
+            max-width: 720px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            padding-top: 34px;
+            color: var(--muted);
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
-        .fade-in.visible {
+        .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
-            .steps-grid { grid-template-columns: 1fr; }
-            .comp-table { grid-template-columns: 1fr; }
-            .hero-cta { flex-direction: column; width: 100%; max-width: 280px; }
-            .btn { justify-content: center; }
+        @media (max-width: 1080px) {
+            .hero,
+            .value-grid,
+            .deliverable-grid,
+            .workflow-grid,
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-side {
+                grid-template-columns: 1fr;
+            }
+
+            .compare-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .shell {
+                width: min(100% - 20px, 1180px);
+            }
+
+            .nav {
+                border-radius: 24px;
+                padding: 16px;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 12px;
+            }
+
+            .hero {
+                padding-top: 22px;
+            }
+
+            .hero h1 {
+                letter-spacing: -0.04em;
+            }
+
+            .actions,
+            .metrics {
+                flex-direction: column;
+            }
+
+            .metric {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#features">功能</a></li>
-            <li><a href="#comparison">对比</a></li>
-            <li><a href="#steps">使用</a></li>
-            <li><a href="https://github.com/AIPMAndy/IPClawForHealth" target="_blank">GitHub</a></li>
-        </ul>
-    </nav>
+    <div class="shell">
+        <nav class="nav">
+            <div class="brand">
+                <div class="brand-mark">H</div>
+                <span>IPClawForHealth</span>
+            </div>
+            <div class="nav-links">
+                <a href="#value">价值</a>
+                <a href="#deliverables">交付物</a>
+                <a href="#workflow">工作流</a>
+                <a href="https://github.com/AIPMAndy/IPClawForHealth" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+        </nav>
 
-    <section class="hero">
-        <div class="hero-badge">✦ 开源免费</div>
-        <h1><span>让大健康行业创始人</span><br>都会做自己的口播IP</h1>
-        <p>专为大健康行业创始人口播IP打造的手把手教学工具，不是通用工具，而是授人以渔</p>
-        <div class="hero-cta">
-            <a href="https://github.com/AIPMAndy/IPClawForHealth" class="btn btn-primary" target="_blank">开始在 GitHub →</a>
-            <a href="#features" class="btn btn-secondary">了解更多</a>
-        </div>
-    </section>
+        <main>
+            <section class="hero">
+                <div class="reveal">
+                    <div class="badge">Open-source content kit for health founders</div>
+                    <h1>把大健康创始人的<span>口播 IP 资产</span>整理成一个可以直接复用的仓库</h1>
+                    <p>它不是“帮你一键生成全部内容”的黑盒工具，而是把定位、选题、脚本、成交、变现和执行路径拆成可以立刻用起来的 Prompt、案例和 CLI 小工具。</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="https://github.com/AIPMAndy/IPClawForHealth" target="_blank" rel="noreferrer">查看 GitHub</a>
+                        <a class="btn btn-secondary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/README.md" target="_blank" rel="noreferrer">阅读 README</a>
+                        <a class="btn btn-secondary" href="#workflow">看使用顺序</a>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <strong>5</strong>
+                            <span>核心 Prompt</span>
+                        </div>
+                        <div class="metric">
+                            <strong>2</strong>
+                            <span>执行工作流</span>
+                        </div>
+                        <div class="metric">
+                            <strong>3</strong>
+                            <span>Python 小工具</span>
+                        </div>
+                        <div class="metric">
+                            <strong>1</strong>
+                            <span>静态展示页</span>
+                        </div>
+                    </div>
+                </div>
 
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>为IP而生，因专业而不同</h2>
-            <p>从定位到变现，一站式解决方案</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card fade-in">
-                <div class="feature-icon">🎯</div>
-                <h3>IP定位诊断</h3>
-                <p>基于创始人背景、市场分析、用户需求，生成专属IP定位报告</p>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">📝</div>
-                <h3>100+行业选题库</h3>
-                <p>涵盖减肥、养生、营养、心理等细分领域，帮你找到爆款选题</p>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">📹</div>
-                <h3>脚本模板</h3>
-                <p>5分钟速成口播脚本，专业又通俗，持续输出不再难</p>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">💬</div>
-                <h3>成交话术</h3>
-                <p>从引流到成交全套话术模板，让流量高效变现</p>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">⚡</div>
-                <h3>快速出片流</h3>
-                <p>30分钟出片工作流，新手也能快速上手</p>
-            </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">🚀</div>
-                <h3>深度打造流</h3>
-                <p>30天IP打造系统化路径，从0到1建立个人品牌</p>
-            </div>
-        </div>
-    </section>
+                <div class="hero-panel reveal">
+                    <div class="panel-main">
+                        <span class="eyebrow">Current repo payload</span>
+                        <h2>仓库现在交付的是一套“内容资产仓”，不是一个模糊的概念页。</h2>
+                        <div class="stack">
+                            <div class="stack-item">
+                                <strong>定位、选题、脚本、话术、变现</strong>
+                                <span>从内容方向到产品承接的核心 Prompt</span>
+                            </div>
+                            <div class="stack-item">
+                                <strong>30 分钟出片 / 30 天打造</strong>
+                                <span>把单条内容产出和长期 IP 路径都写成 SOP</span>
+                            </div>
+                            <div class="stack-item">
+                                <strong>选题生成 / Prompt 生成 / 脚本优化</strong>
+                                <span>直接可运行，不需要额外依赖</span>
+                            </div>
+                        </div>
+                        <div class="command-list">
+                            <div class="command">cat prompts/定位诊断.md</div>
+                            <div class="command">python3 tools/topic_generator.py</div>
+                            <div class="command">python3 tools/ai_prompt_generator.py</div>
+                            <div class="command">python3 tools/script_optimizer.py</div>
+                        </div>
+                    </div>
+                    <div class="panel-side">
+                        <div class="panel-side-card">
+                            <span class="eyebrow">Who it helps</span>
+                            <h3>适合的人</h3>
+                            <ul>
+                                <li>健身教练</li>
+                                <li>营养师</li>
+                                <li>中医 / 养生从业者</li>
+                                <li>健康管理品牌创始人</li>
+                            </ul>
+                        </div>
+                        <div class="panel-side-card">
+                            <span class="eyebrow">How to think about it</span>
+                            <h3>最合适的定位</h3>
+                            <p>先把它当成一个高质量的内容工具仓，再逐步往产品入口、品牌主页和交付资产方向升级。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <section class="comparison" id="comparison">
-        <div class="section-header">
-            <h2>为什么选择 IPClawForHealth？</h2>
-            <p>差异化定位，只为大健康行业创始人</p>
-        </div>
-        <div class="comparison-content">
-            <div class="comp-table">
-                <div class="comp-header">能力</div>
-                <div class="comp-header">通用视频工具</div>
-                <div class="comp-header">IPClaw</div>
-                <div class="comp-header highlight">IPClawForHealth</div>
-                
-                <div class="comp-cell">大健康行业垂直</div>
-                <div class="comp-cell cross">✗</div>
-                <div class="comp-cell cross">✗</div>
-                <div class="comp-cell highlight"><span class="check">✓</span> 独有</div>
-                
-                <div class="comp-cell">创始人IP定位诊断</div>
-                <div class="comp-cell cross">✗</div>
-                <div class="comp-cell check">✓</div>
-                <div class="comp-cell highlight"><span class="check">✓</span> 更强</div>
-                
-                <div class="comp-cell">行业专属选题库</div>
-                <div class="comp-cell cross">✗</div>
-                <div class="comp-cell check">✓</div>
-                <div class="comp-cell highlight"><span class="check">✓</span> 100+</div>
-                
-                <div class="comp-cell">变现话术模板</div>
-                <div class="comp-cell cross">✗</div>
-                <div class="comp-cell cross">✗</div>
-                <div class="comp-cell highlight"><span class="check">✓</span> 独有</div>
-            </div>
-        </div>
-    </section>
+            <section id="value">
+                <div class="section-head reveal">
+                    <div>
+                        <h2>为什么这个项目比泛 Prompt 包更有价值</h2>
+                    </div>
+                    <p>核心差异不是“写得更热血”，而是把大健康行业创始人最常卡住的环节拆得更细、更接近实际执行。</p>
+                </div>
+                <div class="grid value-grid">
+                    <article class="card reveal">
+                        <small>Vertical focus</small>
+                        <h3>行业限定</h3>
+                        <p>不是泛博主模板，而是围绕健康、养生、健身、营养等场景整理内容资产。</p>
+                    </article>
+                    <article class="card reveal">
+                        <small>Founder angle</small>
+                        <h3>创始人视角</h3>
+                        <p>强调专业身份、差异化定位、专家表达和长期信任建设，而不是单纯追热点。</p>
+                    </article>
+                    <article class="card reveal">
+                        <small>Content to conversion</small>
+                        <h3>从内容到成交</h3>
+                        <p>不只停在“拍什么”，还把话术和变现设计接进来，让内容有承接动作。</p>
+                    </article>
+                    <article class="card reveal">
+                        <small>Runnable assets</small>
+                        <h3>可运行工具</h3>
+                        <p>除了 Markdown 资产，还补了 CLI 工具，降低第一次上手的执行摩擦。</p>
+                    </article>
+                </div>
+            </section>
 
-    <section class="steps" id="steps">
-        <div class="section-header">
-            <h2>3步快速开始</h2>
-            <p>从0到1打造你的IP</p>
-        </div>
-        <div class="steps-grid">
-            <div class="step-item fade-in">
-                <div class="step-number">1</div>
-                <h3>找定位</h3>
-                <p>使用IP定位诊断prompt，找到属于自己的差异化定位</p>
-            </div>
-            <div class="step-item fade-in">
-                <div class="step-number">2</div>
-                <h3>选选题</h3>
-                <p>从100+行业专属选题库中，选择适合自己的爆款选题</p>
-            </div>
-            <div class="step-item fade-in">
-                <div class="step-number">3</div>
-                <h3>写脚本</h3>
-                <p>用脚本模板5分钟生成专业口播稿</p>
-            </div>
-        </div>
-    </section>
+            <section id="deliverables">
+                <div class="section-head reveal">
+                    <div>
+                        <h2>你拿到的是哪些文件</h2>
+                    </div>
+                    <p>每个入口都应该能指向一个真实文件，而不是只停在概念介绍上。</p>
+                </div>
+                <div class="grid deliverable-grid">
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/prompts/定位诊断.md" target="_blank" rel="noreferrer">
+                        <small>Prompt</small>
+                        <h3>定位诊断</h3>
+                        <p>先想清楚你服务谁、凭什么被信任、内容角度从哪里切入。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/prompts/选题库.md" target="_blank" rel="noreferrer">
+                        <small>Prompt</small>
+                        <h3>选题库</h3>
+                        <p>按赛道和阶段组织的选题方向，解决“今天到底讲什么”。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/prompts/脚本模板.md" target="_blank" rel="noreferrer">
+                        <small>Prompt</small>
+                        <h3>脚本模板</h3>
+                        <p>把选题转成更适合短视频口播的结构化脚本骨架。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/prompts/变现设计.md" target="_blank" rel="noreferrer">
+                        <small>Prompt</small>
+                        <h3>变现设计</h3>
+                        <p>把流量、私域、咨询、训练营和高客单服务连成一条线。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/workflows/快速出片流.md" target="_blank" rel="noreferrer">
+                        <small>Workflow</small>
+                        <h3>快速出片流</h3>
+                        <p>解决单条内容的产出速度，让你先稳定发出来。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/workflows/深度打造流.md" target="_blank" rel="noreferrer">
+                        <small>Workflow</small>
+                        <h3>深度打造流</h3>
+                        <p>把短期内容生产升级成 30 天的长期 IP 节奏。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/tools/README.md" target="_blank" rel="noreferrer">
+                        <small>CLI tools</small>
+                        <h3>辅助工具</h3>
+                        <p>选题生成、AI Prompt 生成、脚本优化三个小工具直接可跑。</p>
+                    </a>
+                    <a class="deliverable-card reveal" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/examples/%E6%A1%88%E4%BE%8B%E5%BA%93.md" target="_blank" rel="noreferrer">
+                        <small>Casebook</small>
+                        <h3>案例库</h3>
+                        <p>用参考案例拆解内容结构、定位方式和转化动作。</p>
+                    </a>
+                </div>
+            </section>
 
-    <footer>
-        <p>Made with ✦ by <a href="https://github.com/AIPMAndy" target="_blank">AI酋长Andy</a></p>
-    </footer>
+            <section>
+                <div class="section-head reveal">
+                    <div>
+                        <h2>项目应该怎么被理解</h2>
+                    </div>
+                    <p>清晰定位比堆叠形容词更重要。这个页面直接告诉用户项目真正交付了什么。</p>
+                </div>
+                <div class="compare-table reveal">
+                    <div class="compare-row compare-head">
+                        <div class="compare-cell">对比维度</div>
+                        <div class="compare-cell">泛内容模板</div>
+                        <div class="compare-cell">IPClawForHealth</div>
+                    </div>
+                    <div class="compare-row">
+                        <div class="compare-cell">行业聚焦</div>
+                        <div class="compare-cell muted-cell">通常比较泛</div>
+                        <div class="compare-cell strong-cell">明确面向大健康行业</div>
+                    </div>
+                    <div class="compare-row">
+                        <div class="compare-cell">身份视角</div>
+                        <div class="compare-cell muted-cell">更多像普通博主内容</div>
+                        <div class="compare-cell strong-cell">更适合创始人 / 专家型表达</div>
+                    </div>
+                    <div class="compare-row">
+                        <div class="compare-cell">执行路径</div>
+                        <div class="compare-cell muted-cell">常停留在灵感层</div>
+                        <div class="compare-cell strong-cell">把定位、选题、脚本、成交串成链路</div>
+                    </div>
+                    <div class="compare-row">
+                        <div class="compare-cell">工具支持</div>
+                        <div class="compare-cell muted-cell">多为纯文档</div>
+                        <div class="compare-cell strong-cell">含 3 个可运行 CLI 工具</div>
+                    </div>
+                    <div class="compare-row">
+                        <div class="compare-cell">展示能力</div>
+                        <div class="compare-cell muted-cell">缺少项目入口</div>
+                        <div class="compare-cell strong-cell">README + 静态 landing page 双入口</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="workflow">
+                <div class="section-head reveal">
+                    <div>
+                        <h2>推荐使用顺序</h2>
+                    </div>
+                    <p>最有效的路径不是先折腾页面，而是先把你能持续产出的内容资产打通。</p>
+                </div>
+                <div class="grid workflow-grid">
+                    <article class="workflow-card reveal">
+                        <div class="step">1</div>
+                        <small>Positioning</small>
+                        <h3>先找定位</h3>
+                        <p>用定位诊断 Prompt，明确谁是你的理想客户、你的专业抓手是什么。</p>
+                        <code>cat prompts/定位诊断.md</code>
+                    </article>
+                    <article class="workflow-card reveal">
+                        <div class="step">2</div>
+                        <small>Topics</small>
+                        <h3>再定选题</h3>
+                        <p>从行业选题库里挑切口，或者先用生成器跑一轮思路。</p>
+                        <code>python3 tools/topic_generator.py</code>
+                    </article>
+                    <article class="workflow-card reveal">
+                        <div class="step">3</div>
+                        <small>Script</small>
+                        <h3>写初稿再优化</h3>
+                        <p>先用 AI Prompt 生成器拿到第一版，再用脚本优化器改成更适合口播的说法。</p>
+                        <code>python3 tools/script_optimizer.py</code>
+                    </article>
+                    <article class="workflow-card reveal">
+                        <div class="step">4</div>
+                        <small>Conversion</small>
+                        <h3>把成交接上</h3>
+                        <p>用话术库和变现设计，把内容流量承接到私域、咨询和产品梯度上。</p>
+                        <code>cat prompts/变现设计.md</code>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-head reveal">
+                    <div>
+                        <h2>更适合哪些角色</h2>
+                    </div>
+                    <p>最理想的使用者不是“想当网红的人”，而是已经有专业能力、需要把表达和转化梳理出来的人。</p>
+                </div>
+                <div class="grid case-grid">
+                    <article class="case-card reveal">
+                        <small>Fitness</small>
+                        <h3>健身教练</h3>
+                        <p>适合把训练经验、动作纠错、饮食建议转成持续输出的短视频内容。</p>
+                    </article>
+                    <article class="case-card reveal">
+                        <small>Nutrition</small>
+                        <h3>营养师</h3>
+                        <p>适合做辟谣、饮食建议、减脂清单和咨询成交承接。</p>
+                    </article>
+                    <article class="case-card reveal">
+                        <small>Wellness</small>
+                        <h3>中医 / 养生品牌</h3>
+                        <p>适合把传统专业内容翻译成现代用户听得懂、愿意继续咨询的表达方式。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="callout reveal">
+                <h2>先把仓库做成可信的“内容资产入口”，再继续做强品牌转化。</h2>
+                <p>如果你今天就要把项目展示出去，README 和这个 landing page 已经足够承担第一屏说明职责。接下来最值得补的是：更多真实案例、Prompt 输入输出样例，以及更强的展示素材。</p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/README.md" target="_blank" rel="noreferrer">看中文 README</a>
+                    <a class="btn btn-secondary" href="https://github.com/AIPMAndy/IPClawForHealth/blob/main/tools/README.md" target="_blank" rel="noreferrer">看工具说明</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>Built for health founders who need a clearer content-to-conversion workflow.</span>
+            <a href="https://github.com/AIPMAndy" target="_blank" rel="noreferrer">AI酋长Andy</a>
+        </footer>
+    </div>
 
     <script>
-        // Scroll animation
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add("visible");
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.12 });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
     </script>
 </body>
 </html>
