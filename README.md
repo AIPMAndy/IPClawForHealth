@@ -4,7 +4,7 @@
 
 **给大健康行业创始人的开源口播 IP 内容工具箱。**
 
-[![License](https://img.shields.io/badge/license-MIT-2f8f83.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache_2.0-2f8f83.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/IPClawForHealth?style=social)](https://github.com/AIPMAndy/IPClawForHealth/stargazers)
 [![Contributors](https://img.shields.io/github/contributors/AIPMAndy/IPClawForHealth)](https://github.com/AIPMAndy/IPClawForHealth/graphs/contributors)
 
@@ -182,7 +182,7 @@ IPClawForHealth/
 
 ## 📄 License
 
-本项目使用 [MIT License](LICENSE)。
+本项目使用 [Apache 2.0 License](LICENSE)。
 
 ## 👨‍💻 作者
 
