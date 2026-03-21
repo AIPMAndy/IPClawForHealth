@@ -4,7 +4,7 @@
 
 **An open-source talking-head IP content kit for health industry founders.**
 
-[![License](https://img.shields.io/badge/license-MIT-2f8f83.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache_2.0-2f8f83.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/AIPMAndy/IPClawForHealth?style=social)](https://github.com/AIPMAndy/IPClawForHealth/stargazers)
 [![Contributors](https://img.shields.io/github/contributors/AIPMAndy/IPClawForHealth)](https://github.com/AIPMAndy/IPClawForHealth/graphs/contributors)
 
@@ -173,7 +173,7 @@ When you publish content about disease, treatment, medicine, chronic conditions,
 
 ## 📄 License
 
-This project is released under the [MIT License](LICENSE).
+This project is released under the [Apache 2.0 License](LICENSE).
 
 ## 👨‍💻 Author
 
